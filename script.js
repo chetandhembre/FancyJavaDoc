@@ -474,7 +474,7 @@ function autocompleteIt ( query ) {
 	var obj = new Object();
 	obj=nodes[ret];
 	obj.index = ret;
-	document.getElementById("searchquery").placeholder = autocomplete_array[0];   
+	 
 	return  ((ret == -1) ? null : nodes[ret]);
 	
 }
