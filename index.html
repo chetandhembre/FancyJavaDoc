@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="http://d3js.org/d3.v2.min.js?2.9.3"></script>
+
+<link href="style.css" rel="stylesheet" />
+<body style="margin: 0;background-color: #252929;overflow:hidden">
+<div style="float: right" id= "info"  class="info">
+  
+  <div class="search">
+	  	 <label> Fancy Java Doc</label>
+	  	 <input type="search" placeholder="enter interface,class,excpetion name" id = "searchquery"/>
+	</div>
+  <div id = "intro">
+  	
+	
+  	<p>
+  		Last month i was taking core java class and i have to look again again java doc .. And believe me that was fustrating.So 
+  		from that time i was thinking how to make it better or may be less boring . Same time i came across <a href="https://github.com/hughsk/colony" target="_blank" style="text-decoration: none"> colony</a>.
+  		which actualy visualize all module present in node.js and there relationship with code at right time,you can check it out 
+  		<a href="http://hughsk.github.com/colony/" target="_blank" style="text-decoration: none"> here </a>.
+  	</p>
+  	<p>
+  		So you can say i inspire from his work and try to think how can I make javadoc more interesting. I used  <a href="http://d3js.org/" target="_blank" style="text-decoration: none"> d3.js </a>.
+  		It is data driven document which specialy develope for visualizing data . I use force layout for creating this effect.You should check out.
+  		There are many example which are explain in very detail.  
+  	</p>
+  	<p>
+  		This is just proof of concept . And there are  many things to improve . I would like to do it more better . if you like to contribute you can find code 
+  		<a href="http://hughsk.github.com/colony/" target="_blank" style="text-decoration: none"> here </a>.  
+  	</p>
+  </div>
+ 
+  <div id = "doc"> 
+  
+	  
+	  <div class="javadoc" id = "javadoc">
+	  	<h2 id="nameOfObj"></h2>
+	  	<p id = "signature" class="signature"></p>
+	  	<br />
+	     <p id = "descritption"> </p>
+	     <h3>Constructor Summary</h3>
+	     <p id= "constructor">
+	     </p>
+	     <h3>Method Summary</h3>
+	     <p id= "methods">
+	     </p>
+	  </div>	
+	</div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

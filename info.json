@@ -1,0 +1,2548 @@
+{
+   "nodes": {
+      "class" :[ {
+          
+          "name" : "GenericServlet" ,
+          "signature" : "public abstract class GenericServlet extends java.lang.Object implements Servlet, ServletConfig, java.io.Serializable" ,
+          "description" : "Defines a generic, protocol-independent servlet. To write an HTTP servlet for use on the Web, extend HttpServlet instead." ,
+          "constructors" :[ {
+              
+               "signature" : "GenericServlet()" ,
+               "description" : "Does Nothing"
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public void destory()" ,
+              "description" : " Called by the servlet container to indicate to a servlet that the servlet is being taken out of service."
+               
+           } , {
+              
+              "signature" : "public java.lang.String getInitParameter(java.lang.String name)" ,
+              "description" : "Returns a String containing the value of the named initialization parameter, or null if the parameter does not exist"
+              
+           } , {
+              
+              "signature" : "public java.util.Enumeration getInitParameterNames()" ,
+              "description" : "Returns the names of the servlet's initialization parameters as an Enumeration of String objects, or an empty Enumeration if the servlet has no initialization parameters"
+              
+           } , {
+              
+              "signature" : "public ServletConfig getServletConfig()" ,
+              "description" : "Returns this servlet's ServletConfig object."
+              
+           } , {
+              
+              "signature" : "public ServletContext getServletContext()" ,
+              "description" : "Returns a reference to the ServletContext in which this servlet is running. "
+              
+           } , {
+              
+              "signature" : "public java.lang.String getServletInfo()" ,
+              "description" : "Returns information about the servlet, such as author, version, and copyright. By default, this method returns an empty string. Override this method to have it return a meaningful value. "
+              
+           } , {
+              
+              "signature" : "public void init(ServletConfig config)throws ServletException" ,
+              "description" : "Called by the servlet container to indicate to a servlet that the servlet is being placed into service." ,
+              "exception" : [ {
+                     
+                     "throws" : "ServletException - if an exception occurs that interrupts the servlet's normal operation" 
+                                    
+              }
+              ]
+              
+           } , {
+              
+              "signature" : "public void init()throws ServletException" ,
+              "description" : "A convenience method which can be overridden so that there's no need to call super.init(config)." ,
+              "exception" : [ {
+              
+                    "throws" : "ServletException - if an exception occurs that interrupts the servlet's normal operation" 
+              
+              }
+              ]
+              
+           } , {
+              
+              "signature" : "public void log(java.lang.String msg)" ,
+              "description" : "Writes the specified message to a servlet log file, prepended by the servlet's name." 
+              
+           } , {
+              
+              "signature" : "public void log(java.lang.String message,java.lang.Throwable t)" ,
+              "description" : "Writes an explanatory message and a stack trace for a given Throwable exception to the servlet log file, prepended by the servlet's name." 
+              
+           } , {
+              
+              "signature" : "public abstract void service(ServletRequest req,ServletResponse res)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the servlet container to allow the servlet to respond to a request. See Servlet.service(javax.servlet.ServletRequest, javax.servlet.ServletResponse)." ,
+              "exception" : [ {
+                  
+                  "throws" : "ServletException - if an exception occurs that interferes with the servlet's normal operation occurred"
+              } , {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurs"
+              } 
+              ]  
+              
+           } , {
+              
+              "signature" : "public java.lang.String getServletName()" ,
+              "description" : "Returns the name of this servlet instance. See ServletConfig.getServletName()." 
+              
+           }
+          ]
+             
+      } , {
+          
+          "name" : "ServletContextAttributeEvent" ,
+          "signature" : "public class ServletContextAttributeEvent extends ServletContextEvent" ,
+          "description" : "This is the event class for notifications about changes to the attributes of the servlet context of a web application." ,
+          "constructors" :[ {
+              
+               "signature" : "ServletContextAttributeEvent(ServletContext source, java.lang.String name, java.lang.Object value) " ,
+               "description" : "Construct a ServletContextAttributeEvent from the given context for the given attribute name and attribute value."
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getName()" ,
+              "description" : "Return the name of the attribute that changed on the ServletContext."
+               
+           } , {
+              
+              "signature" : "public java.lang.Object getValue()" ,
+              "description" : "Returns the value of the attribute that has been added, removed, or replaced. If the attribute was added, this is the value of the attribute. If the attribute was removed, this is the value of the removed attribute. If the attribute was replaced, this is the old value of the attribute."
+              
+           }
+        ]    
+      }  , {
+          
+          "name" : "ServletContextEvent" ,
+          "signature" : "public class ServletContextEvent extends java.util.EventObject" ,
+          "description" : "This is the event class for notifications about changes to the servlet context of a web application." ,
+          "constructors" :[ {
+              
+               "signature" : "ServletContextEvent(ServletContext source)" ,
+               "description" : "Construct a ServletContextEvent from the given context."
+             
+           }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public ServletContext getServletContext()" ,
+              "description" : "Return the ServletContext that changed."
+               
+           } 
+        ]    
+      } , {
+          
+          "name" : "ServletInputStream" ,
+          "signature" : "public abstract class ServletInputStream extends java.io.InputStream" ,
+          "description" : "Provides an input stream for reading binary data from a client request, including an efficient readLine method for reading data one line at a time. " ,
+          "constructors" :[ {
+              
+               "signature" : " protected ServletInputStream()" ,
+               "description" : " Does nothing, because this is an abstract class."
+             
+            }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public int readLine(byte[] b,int off,int len) throws java.io.IOException" ,
+              "description" : "Reads the input stream, one line at a time. Starting at an offset, reads bytes into an array, until it reads a certain number of bytes or reaches a newline character, which it reads into the array as well.This method returns -1 if it reaches the end of the input stream before reading the maximum number of bytes.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception has occurred"
+              }  
+              ]
+               
+           }   
+        ]    
+      } , {
+          
+          "name" : "ServletOutputStream" ,
+          "signature" : "public abstract class ServletOutputStream extends java.io.OutputStream" ,
+          "description" : "Provides an output stream for sending binary data to the client. A ServletOutputStream object is normally retrieved via the ServletResponse.getOutputStream() method." ,
+          "constructors" :[ {
+              
+               "signature" : "protected ServletOutputStream()" ,
+               "description" : "Does nothing, because this is an abstract class."
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public void print(java.lang.String s)throws java.io.IOException" ,
+              "description" : "Writes a String to the client, without a carriage return-line feed (CRLF) character at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void print(boolean b) throws java.io.IOException" ,
+              "description" : "Writes a boolean value to the client, with no carriage return-line feed (CRLF) character at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void print(char c) throws java.io.IOException" ,
+              "description" : "Writes a character to the client, with no carriage return-line feed (CRLF) at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void print(int i)throws java.io.IOException" ,
+              "description" : "Writes an int to the client, with no carriage return-line feed (CRLF) at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void print(long l)throws java.io.IOException" ,
+              "description" : "Writes a long value to the client, with no carriage return-line feed (CRLF) at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void print(float  l)throws java.io.IOException" ,
+              "description" : "Writes a float  value to the client, with no carriage return-line feed (CRLF) at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void print(double  l)throws java.io.IOException" ,
+              "description" : "Writes a double value to the client, with no carriage return-line feed (CRLF) at the end.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println()throws java.io.IOException" ,
+              "description" : "Writes a carriage return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(java.lang.String s)throws java.io.IOException" ,
+              "description" : "Writes a string return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(boolean b)throws java.io.IOException" ,
+              "description" : "Writes a boolean return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(char  c)throws java.io.IOException" ,
+              "description" : "Writes a char return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(int   i)throws java.io.IOException" ,
+              "description" : "Writes a int return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(long l)throws java.io.IOException" ,
+              "description" : "Writes a long return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(float l)throws java.io.IOException" ,
+              "description" : "Writes a float return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void println(double l)throws java.io.IOException" ,
+              "description" : "Writes a double return-line feed (CRLF) to the client.",
+                               
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+              }  
+              ]
+               
+           }
+        ]    
+      } , {
+          
+          "name" : "ServletRequestAttributeEvent" ,
+          "signature" : "public class ServletRequestAttributeEvent extends ServletRequestEvent" ,
+          "description" : "This is the event class for notifications of changes to the attributes of the servlet request in an application." ,
+          "constructors" :[ {
+              
+               "signature" : "public ServletRequestAttributeEvent(ServletContext sc,ServletRequest request,java.lang.String name,java.lang.Object value)" ,
+               "description" : "Construct a ServletRequestAttributeEvent giving the servlet context of this web application, the ServletRequest whose attributes are changing and the name and value of the attribute."
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getName()" ,
+              "description" : "Return the name of the attribute that changed on the ServletRequest."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.Object getValue()" ,
+              "description" : "Returns the value of the attribute that has been added, removed or replaced. If the attribute was added, this is the value of the attribute. If the attribute was removed, this is the value of the removed attribute. If the attribute was replaced, this is the old value of the attribute."
+              
+               
+           }   
+        ]    
+      } , {
+          
+          "name" : "ServletRequestEvent" ,
+          "signature" : "public class ServletRequestEvent extends java.util.EventObject" ,
+          "description" : "Events of this kind indicate lifecycle events for a ServletRequest. The source of the event is the ServletContext of this web application." ,
+          "constructors" :[ {
+              
+               "signature" : "public ServletRequestEvent(ServletContext sc,ServletRequest request)" ,
+               "description" : "Construct a ServletRequestEvent for the given ServletContext and ServletRequest."
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public ServletRequest getServletRequest()" ,
+              "description" : "Returns the ServletRequest that is changing."
+              
+               
+           } , {
+              
+              "signature" : "public ServletContext getServletContext()" ,
+              "description" : "Returns the ServletContext of this web application."
+              
+               
+           }   
+        ]    
+      } , {
+          
+          "name" : "ServletRequestWrapper" ,
+          "signature" : "public class ServletRequestWrapper extends java.lang.Object implements ServletRequest" ,
+          "description" : "Provides a convenient implementation of the ServletRequest interface that can be subclassed by developers wishing to adapt the request to a Servlet. This class implements the Wrapper or Decorator pattern. Methods default to calling through to the wrapped request object." ,
+          "constructors" :[ {
+              
+               "signature" : "public ServletRequestWrapper(ServletRequest request)" ,
+               "description" : "Creates a ServletRequest adaptor wrapping the given request object.",
+               "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the request is null"
+               }  
+              ]
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public ServletRequest getRequest()" ,
+              "description" : "Return the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public void setRequest(ServletRequest request)" ,
+              "description" : "Sets the request object being wrapped.",
+              "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the request is null."
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.Object getAttribute(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to call getAttribute(String name) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.util.Enumeration getAttributeNames()" ,
+              "description" : "The default behavior of this method is to return getAttributeNames() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getCharacterEncoding()" ,
+              "description" : "The default behavior of this method is to return getCharacterEncoding() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public void setCharacterEncoding(java.lang.String enc)throws java.io.UnsupportedEncodingException" ,
+              "description" : "The default behavior of this method is to set the character encoding on the wrapped request object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.UnsupportedEncodingException - if this is not a valid encoding"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public int getContentLength()" ,
+              "description" : "The default behavior of this method is to return getContentLength() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getContentType()" ,
+              "description" : "The default behavior of this method is to return getContentType() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public ServletInputStream getInputStream() throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to return getInputStream() on the wrapped request object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public java.lang.String getParameter(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to return getParameter(String name) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.util.Map getParameterMap()" ,
+              "description" : "The default behavior of this method is to return getParameterMap() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.util.Enumeration getParameterNames()" ,
+              "description" : "The default behavior of this method is to return getParameterNames() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String[] getParameterValues(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to return getParameterValues(String name) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getProtocol()" ,
+              "description" : "The default behavior of this method is to return getProtocol() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getScheme()" ,
+              "description" : "The default behavior of this method is to return getScheme() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getServerName()" ,
+              "description" : "The default behavior of this method is to return getServerName() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public int getServerPort()" ,
+              "description" : "The default behavior of this method is to return getServerPort() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.io.BufferedReader getReader() throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to return getReader() on the wrapped request object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public java.lang.String getRemoteAddr()" ,
+              "description" : "The default behavior of this method is to return getRemoteAddr() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getRemoteHost()" ,
+              "description" : "The default behavior of this method is to return getRemoteHost() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public void setAttribute(java.lang.String name,java.lang.Object o)" ,
+              "description" : "The default behavior of this method is to return setAttribute(String name, Object o) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public void removeAttribute(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to call removeAttribute(String name) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.util.Locale getLocale()" ,
+              "description" : "The default behavior of this method is to return getLocale() on the wrapped request object"
+              
+               
+           } , {
+              
+              "signature" : "public boolean isSecure()" ,
+              "description" : "The default behavior of this method is to return isSecure() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public RequestDispatcher getRequestDispatcher(java.lang.String path)" ,
+              "description" : "The default behavior of this method is to return getRequestDispatcher(String path) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getRealPath(java.lang.String path)" ,
+              "description" : "The default behavior of this method is to return getRealPath(String path) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public int getRemotePort()" ,
+              "description" : "The default behavior of this method is to return getRemotePort() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getLocalName()" ,
+              "description" : "The default behavior of this method is to return getLocalName() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getLocalAddr()" ,
+              "description" : "The default behavior of this method is to return getLocalAddr() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public int getLocalPort()" ,
+              "description" : "The default behavior of this method is to return getLocalPort() on the wrapped request object."
+              
+               
+           }
+        ]    
+      } , {
+          
+          "name" : "ServletResponseWrapper" ,
+          "signature" : "public class ServletResponseWrapper extends java.lang.Object implements ServletResponse" ,
+          "description" : "Provides a convenient implementation of the ServletResponse interface that can be subclassed by developers wishing to adapt the response from a Servlet. This class implements the Wrapper or Decorator pattern. Methods default to calling through to the wrapped response object." ,
+          "constructors" :[ {
+              
+               "signature" : "public ServletResponseWrapper(ServletResponse response)" ,
+               "description" : "Creates a ServletResponse adaptor wrapping the given response object.",
+               "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the response is null."
+               }  
+              ]
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public ServletResponse getResponse()" ,
+              "description" : "Return the wrapped ServletResponse object."
+              
+               
+           } , {
+              
+              "signature" : "public void setResponse(ServletResponse response)" ,
+              "description" : "Sets the response being wrapped.",
+              "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the response is null."
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void setCharacterEncoding(java.lang.String charset)" ,
+              "description" : "The default behavior of this method is to call setCharacterEncoding(String charset) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getCharacterEncoding()" ,
+              "description" : "The default behavior of this method is to return getCharacterEncoding() on the wrapped response object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public java.io.PrintWriter getWriter() throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to return getWriter() on the wrapped response object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void setContentLength(int len)" ,
+              "description" : "The default behavior of this method is to call setContentLength(int len) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public int getContentLength()" ,
+              "description" : "The default behavior of this method is to return getContentLength() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public void setContentType(java.lang.String type)" ,
+              "description" : "The default behavior of this method is to call setContentType(String type) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getContentType()" ,
+              "description" : "The default behavior of this method is to return getContentType() on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void setBufferSize(int size)" ,
+              "description" : "The default behavior of this method is to call setBufferSize(int size) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public int getBufferSize()" ,
+              "description" : "The default behavior of this method is to return getBufferSize() on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void flushBuffer() throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to call flushBuffer() on the wrapped response object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public boolean isCommitted()" ,
+              "description" : "The default behavior of this method is to return isCommitted() on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void reset()" ,
+              "description" : "The default behavior of this method is to call reset() on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void resetBuffer()" ,
+              "description" : "The default behavior of this method is to call resetBuffer() on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void setLocale(java.util.Locale loc)" ,
+              "description" : "The default behavior of this method is to call setLocale(Locale loc) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public java.util.Locale getLocale()" ,
+              "description" : "The default behavior of this method is to return getLocale() on the wrapped response object."
+              
+               
+           } 
+        ]    
+      }  , {
+          
+          "name" : "HttpServlet" ,
+          "signature" : "public abstract class HttpServlet extends GenericServlet implements java.io.Serializable" ,
+          "description" : "rovides an abstract class to be subclassed to create an HTTP servlet suitable for a Web site. " ,
+          "constructors" :[ {
+              
+               "signature" : "public HttpServlet()" ,
+               "description" : "Does nothing, because this is an abstract class."
+            }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "protected void doGet(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException",
+              "description" : "Called by the server (via the service method) to allow a servlet to handle a GET request.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error is detected when the servlet handles the GET request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the GET could not be handled"
+               } 
+              ]
+
+              
+               
+           } , {
+              
+              "signature" : "protected long getLastModified(HttpServletRequest req)" ,
+              "description" : "Returns the time the HttpServletRequest object was last modified, in milliseconds since midnight January 1, 1970 GMT. If the time is unknown, this method returns a negative number (the default)."
+                           
+               
+           } , {
+              
+              "signature" : "protected void doHead(HttpServletRequest req,HttpServletResponse resp) throws ServletException,java.io.IOException" ,
+              "description" : "Receives an HTTP HEAD request from the protected service method and handles the request. The client sends a HEAD request when it wants to see only the headers of a response, such as Content-Type or Content-Length. The HTTP HEAD method counts the output bytes in the response to set the Content-Length header accurately.",
+
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the HEAD could not be handled"
+               } 
+              ]
+              
+               
+           } , {
+              
+              "signature" : "protected void doPost(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the server (via the service method) to allow a servlet to handle a POST request. The HTTP POST method allows the client to send data of unlimited length to the Web server a single time and is useful when posting information such as credit card numbers.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error is detected when the servlet handles the request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the POST could not be handled"
+               } 
+              ]
+               
+           } , {
+              
+              "signature" : "protected void doPut(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the server (via the service method) to allow a servlet to handle a PUT request. The PUT operation allows a client to place a file on the server and is similar to sending a file by FTP.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs while the servlet is handling the PUT request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the PUT cannot be handled"
+               } 
+              ]
+                           
+               
+           } , {
+              
+              "signature" : "protected void doDelete(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the server (via the service method) to allow a servlet to handle a DELETE request. The DELETE operation allows a client to remove a document or Web page from the server.",
+               "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs while the servlet is handling the DELETE request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the DELETE cannot be handled"
+               } 
+              ]
+
+              
+               
+           } , {
+              
+              "signature" : "protected void doOptions(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the server (via the service method) to allow a servlet to handle a OPTIONS request. The OPTIONS request determines which HTTP methods the server supports and returns an appropriate header.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs while the servlet is handling the OPTIONS request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the OPTIONS cannot be handled"
+               } 
+              ]
+              
+               
+           } , {
+              
+              "signature" : "protected void doTrace(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the server (via the service method) to allow a servlet to handle a TRACE request. A TRACE returns the headers sent with the TRACE request to the client, so that they can be used in debugging. There's no need to override this method.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs while the servlet is handling the TRACE request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the TRACE cannot be handled"
+               } 
+              ]
+              
+
+              
+               
+           } , {
+              
+              "signature" : "protected void service(HttpServletRequest req,HttpServletResponse resp)throws ServletException,java.io.IOException" ,
+              "description" : "Receives standard HTTP requests from the public service method and dispatches them to the doXXX methods defined in this class. This method is an HTTP-specific version of the Servlet.service(javax.servlet.ServletRequest, javax.servlet.ServletResponse) method. There's no need to override this method.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs while the servlet is handling the HTTP request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the HTTP cannot be handled"
+               } 
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void service(ServletRequest req,ServletResponse res)throws ServletException,java.io.IOException" ,
+              "description" : "Dispatches client requests to the protected service method. There's no need to override this method.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if an input or output error occurs while the servlet is handling the HTTP request"
+               } , {
+                  
+                  "throws" : "ServletException - if the request for the HTTP cannot be handled"
+               } 
+              ]
+
+              
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "HttpServletRequestWrapper" ,
+          "signature" : "public abstract class HttpServlet extends GenericServlet implements java.io.Serializable" ,
+          "description" : "Provides a convenient implementation of the HttpServletRequest interface that can be subclassed by developers wishing to adapt the request to a Servlet. This class implements the Wrapper or Decorator pattern. Methods default to calling through to the wrapped request object." ,
+          "constructors" :[ {
+              
+               "signature" : "public HttpServletRequestWrapper(HttpServletRequest request)" ,
+               "description" : "Constructs a request object wrapping the given request.",
+               "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the request is null"
+               }  
+              ]
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getAuthType()" ,
+              "description" : "The default behavior of this method is to return getAuthType() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public Cookie[] getCookies()" ,
+              "description" : "The default behavior of this method is to return getCookies() on the wrapped request object."
+                           
+               
+           } , {
+              
+              "signature" : "public long getDateHeader(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to return getDateHeader(String name) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getHeader(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to return getHeader(String name) on the wrapped request object."
+               
+           } , {
+              
+              "signature" : "public java.util.Enumeration getHeaders(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to return getHeaders(String name) on the wrapped request object."
+                           
+               
+           } , {
+              
+              "signature" : "public java.util.Enumeration getHeaderNames()" ,
+              "description" : "The default behavior of this method is to return getHeaderNames() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public int getIntHeader(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to return getIntHeader(String name) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getMethod()" ,
+              "description" : "The default behavior of this method is to return getMethod() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getPathInfo()" ,
+              "description" : "The default behavior of this method is to return getPathInfo() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getPathTranslated()" ,
+              "description" : "The default behavior of this method is to return getPathTranslated() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getQueryString()" ,
+              "description" : "The default behavior of this method is to return getQueryString() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getContextPath()" ,
+              "description" : "The default behavior of this method is to return getContextPath() on the wrapped request object."
+                             
+           } , {
+              
+              "signature" : "public java.lang.String getRemoteUser()" ,
+              "description" : "The default behavior of this method is to return getRemoteUser() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public boolean isUserInRole(java.lang.String role)" ,
+              "description" : "The default behavior of this method is to return isUserInRole(String role) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.security.Principal getUserPrincipal()" ,
+              "description" : "The default behavior of this method is to return getUserPrincipal() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getRequestedSessionId()" ,
+              "description" : "The default behavior of this method is to return getRequestedSessionId() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getRequestURI()" ,
+              "description" : "The default behavior of this method is to return getRequestURI() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.StringBuffer getRequestURL()" ,
+              "description" : "The default behavior of this method is to return getRequestURL() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getServletPath()" ,
+              "description" : "The default behavior of this method is to return getServletPath() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public HttpSession getSession(boolean create)" ,
+              "description" : "The default behavior of this method is to return getSession(boolean create) on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public HttpSession getSession()" ,
+              "description" : "The default behavior of this method is to return getSession() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public boolean isRequestedSessionIdValid()" ,
+              "description" : "The default behavior of this method is to return isRequestedSessionIdValid() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public boolean isRequestedSessionIdFromCookie()" ,
+              "description" : "The default behavior of this method is to return isRequestedSessionIdFromCookie() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public boolean isRequestedSessionIdFromURL()" ,
+              "description" : "The default behavior of this method is to return isRequestedSessionIdFromURL() on the wrapped request object."
+              
+               
+           } , {
+              
+              "signature" : "public boolean isRequestedSessionIdFromUrl()" ,
+              "description" : "The default behavior of this method is to return isRequestedSessionIdFromUrl() on the wrapped request object."
+              
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "HttpServletResponseWrapper" ,
+          "signature" : "public class HttpServletResponseWrapper extends ServletResponseWrapper implements HttpServletResponse" ,
+          "description" : "Provides a convenient implementation of the HttpServletResponse interface that can be subclassed by developers wishing to adapt the response from a Servlet. This class implements the Wrapper or Decorator pattern. Methods default to calling through to the wrapped response object." ,
+          "constructors" :[ {
+              
+               "signature" : "public HttpServletResponseWrapper(HttpServletResponse response)" ,
+               "description" : "Constructs a response adaptor wrapping the given response.",
+               "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the request is null"
+               }  
+              ]
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public void addCookie(Cookie cookie)" ,
+              "description" : "The default behavior of this method is to call addCookie(Cookie cookie) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public boolean containsHeader(java.lang.String name)" ,
+              "description" : "The default behavior of this method is to call containsHeader(String name) on the wrapped response object."
+                           
+               
+           } , {
+              
+              "signature" : "public java.lang.String encodeURL(java.lang.String url)" ,
+              "description" : "The default behavior of this method is to call encodeURL(String url) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String encodeRedirectURL(java.lang.String url)" ,
+              "description" : "The default behavior of this method is to return encodeRedirectURL(String url) on the wrapped response object."
+               
+           } , {
+              
+              "signature" : "public java.lang.String encodeUrl(java.lang.String url)" ,
+              "description" : "The default behavior of this method is to call encodeUrl(String url) on the wrapped response object."
+                           
+               
+           } , {
+              
+              "signature" : "public java.lang.String encodeRedirectUrl(java.lang.String url)" ,
+              "description" : "The default behavior of this method is to return encodeRedirectUrl(String url) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void sendError(int sc,java.lang.String msg)throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to call sendError(int sc, String msg) on the wrapped response object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - If an input or output exception occurs"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void sendError(int sc)throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to call sendError(int sc) on the wrapped response object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - If an input or output exception occurs"
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void sendRedirect(java.lang.String location) throws java.io.IOException" ,
+              "description" : "The default behavior of this method is to return sendRedirect(String location) on the wrapped response object.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - If an input or output exception occurs"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void setDateHeader(java.lang.String name,long date)" ,
+              "description" : "The default behavior of this method is to call setDateHeader(String name, long date) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void addDateHeader(java.lang.String name,long date)" ,
+              "description" : "The default behavior of this method is to call addDateHeader(String name, long date) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void setHeader(java.lang.String name,java.lang.String value)" ,
+              "description" : "The default behavior of this method is to return setHeader(String name, String value) on the wrapped response object"
+                             
+           } , {
+              
+              "signature" : "public void addHeader(java.lang.String name,java.lang.String value)" ,
+              "description" : "The default behavior of this method is to return addHeader(String name, String value) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void setIntHeader(java.lang.String name,int value)" ,
+              "description" : "The default behavior of this method is to call setIntHeader(String name, int value) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void setStatus(int sc)" ,
+              "description" : "The default behavior of this method is to call setStatus(int sc) on the wrapped response object."
+              
+               
+           } , {
+              
+              "signature" : "public void setStatus(int sc,java.lang.String sm)" ,
+              "description" : "The default behavior of this method is to call setStatus(int sc, String sm) on the wrapped response object."
+              
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "HttpSessionBindingEvent" ,
+          "signature" : "public class HttpSessionBindingEvent extends HttpSessionEvent" ,
+          "description" : "Events of this type are either sent to an object that implements HttpSessionBindingListener when it is bound or unbound from a session, or to a HttpSessionAttributeListener that has been configured in the deployment descriptor when any attribute is bound, unbound or replaced in a session." ,
+          "constructors" :[ {
+              
+               "signature" : "public HttpSessionBindingEvent(HttpSession session,java.lang.String name)" ,
+               "description" : "Constructs an event that notifies an object that it has been bound to or unbound from a session. To receive the event, the object must implement"
+              
+             
+          } , {
+              
+               "signature" : "public HttpSessionBindingEvent(HttpSession session,java.lang.String name,java.lang.Object value)" ,
+               "description" : "Constructs an event that notifies an object that it has been bound to or unbound from a session. To receive the event, the object must implement HttpSessionBindingListener."
+              
+             
+          }
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public HttpSession getSession()" ,
+              "description" : "Return the session that changed."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getName()" ,
+              "description" : "Returns the name with which the attribute is bound to or unbound from the session."
+                           
+               
+           } , {
+              
+              "signature" : "public java.lang.Object getValue()" ,
+              "description" : "Returns the value of the attribute that has been added, removed or replaced. If the attribute was added (or bound), this is the value of the attribute. If the attribute was removed (or unbound), this is the value of the removed attribute. If the attribute was replaced, this is the old value of the attribute."
+              
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "HttpSessionEvent" ,
+          "signature" : "public class HttpSessionEvent extends java.util.EventObject" ,
+          "description" : "This is the class representing event notifications for changes to sessions within a web application." ,
+          "constructors" :[ {
+              
+               "signature" : "public HttpSessionEvent(HttpSession source)" ,
+               "description" : "Return the session that changed."
+              
+             
+          } 
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public HttpSession getSession()" ,
+              "description" : "Return the session that changed."
+              
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "HttpUtils" ,
+          "signature" : "public class HttpUtils extends java.lang.Object" ,
+          "description" : "Deprecated. As of Java(tm) Servlet API 2.3. These methods were only useful with the default encoding and have been moved to the request interfaces." ,
+          "constructors" :[ {
+              
+               "signature" : "public HttpUtils()" ,
+               "description" : "Constructs an empty HttpUtils object."
+              
+             
+          } 
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public static java.util.Hashtable parseQueryString(java.lang.String s)" ,
+              "description" : "Parses a query string passed from the client to the server and builds a HashTable object with key-value pairs. The query string should be in the form of a string packaged by the GET or POST method, that is, it should have key-value pairs in the form key=value, with each pair separated from the next by a & character.",
+               "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the query string is invalid"
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public static java.util.Hashtable parsePostData(int len,ServletInputStream in)" ,
+              "description" : "Parses data from an HTML form that the client sends to the server using the HTTP POST method and the application/x-www-form-urlencoded MIME type.",
+               "exception" : [ {
+                  
+                  "throws" : "java.lang.IllegalArgumentException - if the data sent by the POST method is invalid"
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public static java.lang.StringBuffer getRequestURL(HttpServletRequest req)" ,
+              "description" : "Reconstructs the URL the client used to make the request, using information in the HttpServletRequest object. The returned URL contains a protocol, server name, port number, and server path, but it does not include query string parameters."
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "InputStream" ,
+          "signature" : "public abstract class InputStream extends Object" ,
+          "description" : "This abstract class is the superclass of all classes representing an input stream of bytes." ,
+          "constructors" :[ {
+              
+               "signature" : "public InputStream()" ,
+               "description" : ""
+              
+             
+          } 
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public abstract int read() throws IOException" ,
+              "description" : "Reads the next byte of data from the input stream. The value byte is returned as an int in the range 0 to 255. If no byte is available because the end of the stream has been reached, the value -1 is returned. This method blocks until input data is available, the end of the stream is detected, or an exception is thrown.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public int read(byte[] b) throws IOException" ,
+              "description" : "Reads up to len bytes of data from the input stream into an array of bytes. An attempt is made to read as many as len bytes, but a smaller number may be read, possibly zero. The number of bytes actually read is returned as an integer.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               } , {
+                  
+                  "throws" : "NullPointerException - if b is null."
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public long skip(long n) throws IOException" ,
+              "description" : "Skips over and discards n bytes of data from this input stream. The skip method may, for a variety of reasons, end up skipping over some smaller number of bytes, possibly 0. This may result from any of a number of conditions; reaching end of file before n bytes have been skipped is only one possibility. The actual number of bytes skipped is returned. If n is negative, no bytes are skipped.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public int available() throws IOException" ,
+              "description" : "Returns the number of bytes that can be read (or skipped over) from this input stream without blocking by the next caller of a method for this input stream. The next caller might be the same thread or or another thread.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void close() throws IOException" ,
+              "description" : "Closes this input stream and releases any system resources associated with the stream.",
+              "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void mark(int readlimit)" ,
+              "description" : "Marks the current position in this input stream. A subsequent call to the reset method repositions this stream at the last marked position so that subsequent reads re-read the same bytes."
+               
+           } , {
+              
+              "signature" : "public void reset() throws IOException" ,
+              "description" : "Repositions this stream to the position at the time the mark method was last called on this input stream.",
+              "exception" : [ {
+                  
+                  "throws" : "IOException - if this stream has not been marked or if the mark has been invalidated."
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public boolean markSupported()" ,
+              "description" : "Tests if this input stream supports the mark and reset methods. Whether or not mark and reset are supported is an invariant property of a particular input stream instance. The markSupported method of InputStream returns false."
+             
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "OutputStream" ,
+          "signature" : "public abstract class OutputStream extends Object" ,
+          "description" : "This abstract class is the superclass of all classes representing an output stream of bytes. An output stream accepts output bytes and sends them to some sink." ,
+          "constructors" :[ {
+              
+               "signature" : "public OutputStream()" ,
+               "description" : ""
+              
+             
+          } 
+          ] ,
+          "methods" : [ {
+              
+              "signature" : "public abstract void write(int b) throws IOException" ,
+              "description" : "Writes the specified byte to this output stream. The general contract for write is that one byte is written to the output stream. The byte to be written is the eight low-order bits of the argument b. The 24 high-order bits of b are ignored.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs. In particular, an IOException may be thrown if the output stream has been closed."
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void write(byte[] b) throws IOException" ,
+              "description" : "Writes b.length bytes from the specified byte array to this output stream. The general contract for write(b) is that it should have exactly the same effect as the call write(b, 0, b.length).",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void write(byte[] b,int off,int len)throws IOException" ,
+              "description" : "Writes len bytes from the specified byte array starting at offset off to this output stream. The general contract for write(b, off, len) is that some of the bytes in the array b are written to the output stream in order; element b[off] is the first byte written and b[off+len-1] is the last byte written by this operation.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs. In particular, an IOException is thrown if the output stream is closed."
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void flush()throws IOException" ,
+              "description" : "Flushes this output stream and forces any buffered output bytes to be written out. The general contract of flush is that calling it is an indication that, if any bytes previously written have been buffered by the implementation of the output stream, such bytes should immediately be written to their intended destination.",
+               "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void close() throws IOException" ,
+              "description" : "Closes this output stream and releases any system resources associated with this stream. The general contract of close is that it closes the output stream. A closed stream cannot perform output operations and cannot be reopened.",
+              "exception" : [ {
+                  
+                  "throws" : "IOException - if an I/O error occurs."
+               }  
+              ]
+               
+           } 
+         ]    
+      }  
+     ] ,
+    
+    "interface" : [ {
+          
+          "name" : "Filter" ,
+          "signature" : "public interface Filter" ,
+          "description" : "A filter is an object that performs filtering tasks on either the request to a resource (a servlet or static content), or on the response from a resource, or both." ,
+          "methods" : [ {
+              
+              "signature" : "public void init(FilterConfig filterConfig) throws ServletException" ,
+              "description" : "Called by the web container to indicate to a filter that it is being placed into service. The servlet container calls the init method exactly once after instantiating the filter. The init method must complete successfully before the filter is asked to do any filtering work.",
+               "exception" : [ {
+                  
+                  "throws" : "ServletException"
+               }  
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void doFilter(ServletRequest request,ServletResponse response,FilterChain chain)throws java.io.IOException,ServletException" ,
+              "description" : "The doFilter method of the Filter is called by the container each time a request/response pair is passed through the chain due to a client request for a resource at the end of the chain. The FilterChain passed in to this method allows the Filter to pass on the request and response to the next entity in the chain.",
+               "exception" : [ {
+                  
+                  "throws" : "java.io.IOException"
+               }, {
+                  
+                  "throws" : "ServletException"
+               }
+              ]
+              
+               
+           } , {
+              
+              "signature" : "public void destroy()" ,
+              "description" : "Called by the web container to indicate to a filter that it is being taken out of service. This method is only called once all threads within the filter's doFilter method have exited or after a timeout period has passed. After the web container calls this method, it will not call the doFilter method again on this instance of the filte"
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "FilterChain" ,
+          "signature" : "public interface FilterChain" ,
+          "description" : "A FilterChain is an object provided by the servlet container to the developer giving a view into the invocation chain of a filtered request for a resource. Filters use the FilterChain to invoke the next filter in the chain, or if the calling filter is the last filter in the chain, to invoke the resource at the end of the chain." ,
+          "methods" : [ {
+              
+              "signature" : "public void doFilter(ServletRequest request,ServletResponse response)throws java.io.IOException,ServletException" ,
+              "description" : "Causes the next filter in the chain to be invoked, or if the calling filter is the last filter in the chain, causes the resource at the end of the chain to be invoked.",
+               "exception" : [ {
+                  
+                  "throws" : "java.io.IOException"
+               } , {
+                  
+                  "throws" : "ServletException"
+               }   
+              ]
+              
+               
+           } 
+         ]    
+      } , {
+          
+          "name" : "FilterConfig" ,
+          "signature" : "public interface FilterConfig" ,
+          "description" : "A filter configuration object used by a servlet container to pass information to a filter during initialization." ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getFilterName()" ,
+              "description" : "Returns a reference to the ServletContext in which the caller is executing."
+              
+               
+           } , {
+              
+              "signature" : "public java.lang.String getInitParameter(java.lang.String name)" ,
+              "description" : "Returns a String containing the value of the named initialization parameter, or null if the parameter does not exist."
+              
+               
+          } , {
+              
+              "signature" : "public java.util.Enumeration getInitParameterNames()" ,
+              "description" : "Returns the names of the filter's initialization parameters as an Enumeration of String objects, or an empty Enumeration if the filter has no initialization parameters."
+               
+           }
+         ]    
+      } , {
+          
+          "name" : "RequestDispatcher" ,
+          "signature" : "public interface RequestDispatcher" ,
+          "description" : "Defines an object that receives requests from the client and sends them to any resource (such as a servlet, HTML file, or JSP file) on the server. The servlet container creates the RequestDispatcher object, which is used as a wrapper around a server resource located at a particular path or given by a particular name." ,
+          "methods" : [ {
+              
+              "signature" : "public void forward(ServletRequest request,ServletResponse response)throws ServletException,java.io.IOException" ,
+              "description" : "Forwards a request from a servlet to another resource (servlet, JSP file, or HTML file) on the server. This method allows one servlet to do preliminary processing of a request and another resource to generate the response.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if the target resource throws this exception"
+               } , {
+                  
+                  "throws" : "ServletException - if the target resource throws this exception"
+               } , {
+                  
+                  "throws" : "java.lang.IllegalStateException - if the response was already committed"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public void include(ServletRequest request,ServletResponse response)throws ServletException,java.io.IOException" ,
+              "description" : "Includes the content of a resource (servlet, JSP page, HTML file) in the response. In essence, this method enables programmatic server-side includes.",
+              "exception" : [ {
+                  
+                  "throws" : "java.io.IOException - if the target resource throws this exception"
+               } , {
+                  
+                  "throws" : "ServletException - if the target resource throws this exception"
+               }  
+              ]
+               
+          } 
+         ]    
+      }  , {
+          
+          "name" : "Servlet" ,
+          "signature" : "public interface Servlet" ,
+          "description" : "Defines methods that all servlets must implement." ,
+          "methods" : [ {
+              
+              "signature" : "public void init(ServletConfig config)throws ServletException" ,
+              "description" : "Called by the servlet container to indicate to a servlet that the servlet is being placed into service.",
+              "exception" : [  {
+                  
+                  "throws" : "ServletException - if the target resource throws this exception"
+               }  
+              ]
+               
+           } , {
+              
+              "signature" : "public ServletConfig getServletConfig()" ,
+              "description" : "Returns a ServletConfig object, which contains initialization and startup parameters for this servlet. The ServletConfig object returned is the one passed to the init method."
+              
+               
+          } , {
+              
+              "signature" : "public void service(ServletRequest req,ServletResponse res)throws ServletException,java.io.IOException" ,
+              "description" : "Called by the servlet container to allow the servlet to respond to a request.",
+              "exception" : [  {
+                  
+                  "throws" : "ServletException - if an exception occurs that interferes with the servlet's normal operation"
+               } ,{
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurs"
+               }   
+              ]
+               
+         } , {
+              
+              "signature" : "public java.lang.String getServletInfo()" ,
+              "description" : "Returns information about the servlet, such as author, version, and copyright."
+               
+         } , {
+              
+              "signature" : "public void destroy()" ,
+              "description" : "Called by the servlet container to indicate to a servlet that the servlet is being taken out of service. This method is only called once all threads within the servlet's service method have exited or after a timeout period has passed. After the servlet container calls this method, it will not call the service method again on this servlet."
+               
+         } 
+        ]    
+      }  , {
+          
+          "name" : "ServletConfig" ,
+          "signature" : "public interface ServletConfig" ,
+          "description" : "A servlet configuration object used by a servlet container to pass information to a servlet during initialization." ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getServletName()" ,
+              "description" : "Returns the name of this servlet instance. The name may be provided via server administration, assigned in the web application deployment descriptor, or for an unregistered (and thus unnamed) servlet instance it will be the servlet's class name."
+               
+           } , {
+              
+              "signature" : "public ServletContext getServletContext()" ,
+              "description" : "Returns a reference to the ServletContext in which the caller is executing."
+              
+               
+          } , {
+              
+              "signature" : "public java.lang.String getInitParameter(java.lang.String name)" ,
+              "description" : "Returns a String containing the value of the named initialization parameter, or null if the parameter does not exist."
+               
+         } , {
+              
+              "signature" : "public java.util.Enumeration getInitParameterNames()" ,
+              "description" : "Returns the names of the servlet's initialization parameters as an Enumeration of String objects, or an empty Enumeration if the servlet has no initialization parameters."
+               
+         } 
+       ]    
+     }  , {
+          
+          "name" : "ServletContext" ,
+          "signature" : "public interface ServletContext" ,
+          "description" : "Defines a set of methods that a servlet uses to communicate with its servlet container, for example, to get the MIME type of a file, dispatch requests, or write to a log file." ,
+          "methods" : [ {
+              
+              "signature" : "public ServletContext getContext(java.lang.String uripath)" ,
+              "description" : "Returns a ServletContext object that corresponds to a specified URL on the server."
+               
+           } , {
+              
+              "signature" : "public int getMajorVersion()" ,
+              "description" : "Returns the major version of the Java Servlet API that this servlet container supports. All implementations that comply with Version 2.4 must have this method return the integer 2."
+              
+               
+          } , {
+              
+              "signature" : "public int getMinorVersion()" ,
+              "description" : "Returns the minor version of the Servlet API that this servlet container supports. All implementations that comply with Version 2.4 must have this method return the integer 4."
+               
+         } , {
+              
+              "signature" : "public java.lang.String getMimeType(java.lang.String file)" ,
+              "description" : "Returns the MIME type of the specified file, or null if the MIME type is not known. The MIME type is determined by the configuration of the servlet container, and may be specified in a web application deployment descriptor. Common MIME types are 'text/html' and 'image/gif'."
+               
+         } , {
+              
+              "signature" : "public java.util.Set getResourcePaths(java.lang.String path)" ,
+              "description" : "Returns a directory-like listing of all the paths to resources within the web application whose longest sub-path matches the supplied path argument. Paths indicating subdirectory paths end with a '/'. The returned paths are all relative to the root of the web application and have a leading '/'."
+               
+         } , {
+              
+              "signature" : "public java.net.URL getResource(java.lang.String path)throws java.net.MalformedURLException" ,
+              "description" : "Returns a URL to the resource that is mapped to a specified path. The path must begin with a '/' and is interpreted as relative to the current context root.",
+               "exception" : [  {
+                  
+                  "throws" : "java.net.MalformedURLException - if the pathname is not given in the correct form"
+               }   
+              ]
+             
+               
+         } , {
+              
+              "signature" : "public java.io.InputStream getResourceAsStream(java.lang.String path)" ,
+              "description" : "Returns the resource located at the named path as an InputStream object."
+               
+         } , {
+              
+              "signature" : "public RequestDispatcher getRequestDispatcher(java.lang.String path)" ,
+              "description" : "Returns a RequestDispatcher object that acts as a wrapper for the resource located at the given path. A RequestDispatcher object can be used to forward a request to the resource or to include the resource in a response. The resource can be dynamic or static."
+               
+         } , {
+              
+              "signature" : "public RequestDispatcher getNamedDispatcher(java.lang.String name)" ,
+              "description" : "Returns a RequestDispatcher object that acts as a wrapper for the named servlet."
+               
+         } , {
+              
+              "signature" : "public Servlet getServlet(java.lang.String name)throws ServletException" ,
+              "description" : "Deprecated. As of Java Servlet API 2.1, with no direct replacement.",
+              "exception" : [  {
+                  
+                  "throws" : "ServletException"
+               }   
+             ] 
+        } , {
+              
+              "signature" : "public void log(java.lang.String message,java.lang.Throwable throwable)" ,
+              "description" : "Writes an explanatory message and a stack trace for a given Throwable exception to the servlet log file. The name and type of the servlet log file is specific to the servlet container, usually an event log."
+               
+        } , {
+              
+              "signature" : "public java.lang.String getRealPath(java.lang.String path)" ,
+              "description" : "Returns a String containing the real path for a given virtual path. For example, the path '/index.html' returns the absolute file path on the server's filesystem would be served by a request for 'http://host/contextPath/index.html', where contextPath is the context path of this ServletContext."
+               
+        } , {
+              
+              "signature" : "public java.lang.String getServerInfo()" ,
+              "description" : "Returns the name and version of the servlet container on which the servlet is running."
+               
+        } , {
+              
+              "signature" : "public java.lang.String getInitParameter(java.lang.String name)" ,
+              "description" : "Returns a String containing the value of the named context-wide initialization parameter, or null if the parameter does not exist."
+               
+        } , {
+              
+              "signature" : "public java.util.Enumeration getInitParameterNames()" ,
+              "description" : "Returns the names of the context's initialization parameters as an Enumeration of String objects, or an empty Enumeration if the context has no initialization parameters."
+               
+        } , {
+              
+              "signature" : "public java.lang.Object getAttribute(java.lang.String name)" ,
+              "description" : "Returns the servlet container attribute with the given name, or null if there is no attribute by that name. An attribute allows a servlet container to give the servlet additional information not already provided by this interface. See your server documentation for information about its attributes. A list of supported attributes can be retrieved using getAttributeNames."
+               
+        } , {
+              
+              "signature" : "public java.util.Enumeration getAttributeNames()" ,
+              "description" : "Returns an Enumeration containing the attribute names available within this servlet context. Use the getAttribute(java.lang.String) method with an attribute name to get the value of an attribute."
+               
+        } , {
+              
+              "signature" : "public void setAttribute(java.lang.String name,java.lang.Object object)" ,
+              "description" : "Binds an object to a given attribute name in this servlet context. If the name specified is already used for an attribute, this method will replace the attribute with the new to the new attribute."
+               
+        } , {
+              
+              "signature" : "public void removeAttribute(java.lang.String name)" ,
+              "description" : "Removes the attribute with the given name from the servlet context. After removal, subsequent calls to getAttribute(java.lang.String) to retrieve the attribute's value will return null."
+               
+        }, {
+              
+              "signature" : "public java.lang.String getServletContextName()" ,
+              "description" : "Returns the name of this web application corresponding to this ServletContext as specified in the deployment descriptor for this web application by the display-name element."
+               
+        }
+       ]    
+     } , {
+          
+          "name" : "ServletContextAttributeListener" ,
+          "signature" : "public interface ServletContextAttributeListener extends java.util.EventListener" ,
+          "description" : "Implementations of this interface receive notifications of changes to the attribute list on the servlet context of a web application. To receive notification events, the implementation class must be configured in the deployment descriptor for the web application." ,
+          "methods" : [ {
+              
+              "signature" : "public void attributeAdded(ServletContextAttributeEvent scab)" ,
+              "description" : "Notification that a new attribute was added to the servlet context. Called after the attribute is added."
+               
+           } , {
+              
+              "signature" : "public void attributeRemoved(ServletContextAttributeEvent scab)" ,
+              "description" : "Notification that an existing attribute has been removed from the servlet context. Called after the attribute is removed."
+              
+               
+          } , {
+              
+              "signature" : "public void attributeReplaced(ServletContextAttributeEvent scab)" ,
+              "description" : "Notification that an attribute on the servlet context has been replaced. Called after the attribute is replaced."
+               
+         }
+       ]    
+     } , {
+          
+          "name" : "ServletContextListener" ,
+          "signature" : "public interface ServletContextListener extends java.util.EventListener" ,
+          "description" : "Implementations of this interface receive notifications about changes to the servlet context of the web application they are part of. To receive notification events, the implementation class must be configured in the deployment descriptor for the web application." ,
+          "methods" : [ {
+              
+              "signature" : "public void contextInitialized(ServletContextEvent sce)" ,
+              "description" : "Notification that the web application initialization process is starting. All ServletContextListeners are notified of context initialization before any filter or servlet in the web application is initialized."
+               
+           } , {
+              
+              "signature" : "public void contextDestroyed(ServletContextEvent sce)" ,
+              "description" : "Notification that the servlet context is about to be shut down. All servlets and filters have been destroy()ed before any ServletContextListeners are notified of context destruction."
+              
+               
+          } 
+       ]    
+     } , {
+          
+          "name" : "ServletRequest" ,
+          "signature" : "public interface ServletRequest" ,
+          "description" : "Defines an object to provide client request information to a servlet. The servlet container creates a ServletRequest object and passes it as an argument to the servlet's service method." ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.Object getAttribute(java.lang.String name)" ,
+              "description" : "Returns the value of the named attribute as an Object, or null if no attribute of the given name exists."
+               
+           } , {
+              
+              "signature" : "public java.util.Enumeration getAttributeNames()" ,
+              "description" : "Returns an Enumeration containing the names of the attributes available to this request. This method returns an empty Enumeration if the request has no attributes available to it."
+          } , {
+              
+              "signature" : "public java.lang.String getCharacterEncoding()" ,
+              "description" : "Returns the name of the character encoding used in the body of this request. This method returns null if the request does not specify a character encoding"
+          } , {
+              
+              "signature" : "public void setCharacterEncoding(java.lang.String env) throws java.io.UnsupportedEncodingException" ,
+              "description" : "Overrides the name of the character encoding used in the body of this request. This method must be called prior to reading request parameters or reading input using getReader().",
+              "exception" : [  {
+                  
+                  "throws" : "java.io.UnsupportedEncodingException - if this is not a valid encoding"
+               }   
+             ]
+          } , {
+              
+              "signature" : "public int getContentLength()" ,
+              "description" : "Returns the length, in bytes, of the request body and made available by the input stream, or -1 if the length is not known. For HTTP servlets, same as the value of the CGI variable CONTENT_LENGTH."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getContentType()" ,
+              "description" : "Returns the MIME type of the body of the request, or null if the type is not known. For HTTP servlets, same as the value of the CGI variable CONTENT_TYPE"
+              
+          } , {
+              
+              "signature" : "public ServletInputStream getInputStream() throws java.io.IOException" ,
+              "description" : "Retrieves the body of the request as binary data using a ServletInputStream. Either this method or getReader() may be called to read the body, not both.",
+              "exception" : [  {
+                  
+                  "throws" : "java.lang.IllegalStateException - if the getReader() method has already been called for this request"
+               } , {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+             ]
+              
+          } , {
+              
+              "signature" : "public java.lang.String getParameter(java.lang.String name)" ,
+              "description" : "Returns the value of a request parameter as a String, or null if the parameter does not exist. Request parameters are extra information sent with the request. For HTTP servlets, parameters are contained in the query string or posted form data.",
+              "exception" : [  {
+                  
+                  "throws" : "java.lang.IllegalStateException - if the getReader() method has already been called for this request"
+               } , {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+             ]
+              
+          } , {
+              
+              "signature" : "public java.util.Enumeration getParameterNames()" ,
+              "description" : "Returns an Enumeration of String objects containing the names of the parameters contained in this request. If the request has no parameters, the method returns an empty Enumeration."
+              
+          } , {
+              
+              "signature" : "public java.lang.String[] getParameterValues(java.lang.String name)" ,
+              "description" : "Returns an array of String objects containing all of the values the given request parameter has, or null if the parameter does not exist."
+              
+          } , {
+              
+              "signature" : "public java.util.Map getParameterMap()" ,
+              "description" : "Returns a java.util.Map of the parameters of this request. Request parameters are extra information sent with the request. For HTTP servlets, parameters are contained in the query string or posted form data."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getProtocol()" ,
+              "description" : "Returns the name and version of the protocol the request uses in the form protocol/majorVersion.minorVersion, for example, HTTP/1.1. For HTTP servlets, the value returned is the same as the value of the CGI variable SERVER_PROTOCOL."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getScheme()" ,
+              "description" : "Returns the name of the scheme used to make this request, for example, http, https, or ftp. Different schemes have different rules for constructing URLs, as noted in RFC 1738."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getServerName()" ,
+              "description" : "Returns the host name of the server to which the request was sent. It is the value of the part before ':' in the Host header value, if any, or the resolved server name, or the server IP address."
+              
+          } , {
+              
+              "signature" : "public int getServerPort()" ,
+              "description" : "Returns the port number to which the request was sent. It is the value of the part after ':' in the Host header value, if any, or the server port where the client connection was accepted on."
+              
+          } , {
+              
+              "signature" : "public java.io.BufferedReader getReader() throws java.io.IOException" ,
+              "description" : "Returns the port number to which the request was sent. It is the value of the part after ':' in the Host header value, if any, or the server port where the client connection was accepted on.",
+              "exception" : [  {
+                  
+                  "throws" : "UnsupportedEncodingException - if the character set encoding used is not supported and the text cannot be decoded"
+               } , {
+                  
+                  "throws" : "java.lang.IllegalStateException - if getInputStream() method has been called on this request"
+               } , {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+             ]
+              
+          } , {
+              
+              "signature" : "public java.lang.String getRemoteAddr()" ,
+              "description" : "Returns the Internet Protocol (IP) address of the client or last proxy that sent the request. For HTTP servlets, same as the value of the CGI variable REMOTE_ADDR."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getRemoteHost()" ,
+              "description" : "Returns the fully qualified name of the client or the last proxy that sent the request. If the engine cannot or chooses not to resolve the hostname (to improve performance), this method returns the dotted-string form of the IP address. For HTTP servlets, same as the value of the CGI variable REMOTE_HOST."
+              
+          } , {
+              
+              "signature" : "public void setAttribute(java.lang.String name,java.lang.Object o)" ,
+              "description" : "Stores an attribute in this request. Attributes are reset between requests. This method is most often used in conjunction with RequestDispatcher."
+              
+          } , {
+              
+              "signature" : "public void removeAttribute(java.lang.String name)" ,
+              "description" : "Removes an attribute from this request. This method is not generally needed as attributes only persist as long as the request is being handled."
+              
+          } , {
+              
+              "signature" : "public java.util.Locale getLocale()" ,
+              "description" : "Returns the preferred Locale that the client will accept content in, based on the Accept-Language header. If the client request doesn't provide an Accept-Language header, this method returns the default locale for the server."
+              
+          } , {
+              
+              "signature" : "public java.util.Enumeration getLocales()" ,
+              "description" : "Returns an Enumeration of Locale objects indicating, in decreasing order starting with the preferred locale, the locales that are acceptable to the client based on the Accept-Language header. If the client request doesn't provide an Accept-Language header, this method returns an Enumeration containing one Locale, the default locale for the server."
+              
+          } , {
+              
+              "signature" : "public boolean isSecure()" ,
+              "description" : "Returns a boolean indicating whether this request was made using a secure channel, such as HTTPS."
+              
+          } , {
+              
+              "signature" : "public RequestDispatcher getRequestDispatcher(java.lang.String path)" ,
+              "description" : "Returns a RequestDispatcher object that acts as a wrapper for the resource located at the given path. A RequestDispatcher object can be used to forward a request to the resource or to include the resource in a response. The resource can be dynamic or static."
+              
+          } , {
+              
+              "signature" : "public int getRemotePort()" ,
+              "description" : "Returns the Internet Protocol (IP) source port of the client or last proxy that sent the request."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getLocalName()" ,
+              "description" : "Returns the host name of the Internet Protocol (IP) interface on which the request was received."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getLocalAddr()" ,
+              "description" : "Returns the Internet Protocol (IP) address of the interface on which the request was received."
+              
+          } , {
+              
+              "signature" : "public int getLocalPort()" ,
+              "description" : "Returns the Internet Protocol (IP) port number of the interface on which the request was received."
+              
+          }                                 
+       ]    
+     } , {
+          
+          "name" : "ServletRequestListener" ,
+          "signature" : "public interface ServletRequestListener extends java.util.EventListener" ,
+          "description" : "A ServletRequestListener can be implemented by the developer interested in being notified of requests coming in and out of scope in a web component. A request is defined as coming into scope when it is about to enter the first servlet or filter in each web application, as going out of scope when it exits the last servlet or the first filter in the chain." ,
+          "methods" : [ {
+              
+              "signature" : "public void requestDestroyed(ServletRequestEvent sre)" ,
+              "description" : "The request is about to go out of scope of the web application."
+               
+           } , {
+              
+              "signature" : "public void requestInitialized(ServletRequestEvent sre)" ,
+              "description" : "The request is about to come into scope of the web application."
+              
+               
+          } 
+       ]    
+     } , {
+          
+          "name" : "ServletResponse" ,
+          "signature" : "public interface ServletResponse" ,
+          "description" : "Defines an object to assist a servlet in sending a response to the client. The servlet container creates a ServletResponse object and passes it as an argument to the servlet's service method." ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getCharacterEncoding()" ,
+              "description" : "Returns the name of the character encoding (MIME charset) used for the body sent in this response. The character encoding may have been specified explicitly using the setCharacterEncoding(java.lang.String) or setContentType(java.lang.String) methods, or implicitly using the setLocale(java.util.Locale) method. Explicit specifications take precedence over implicit specifications. Calls made to these methods after getWriter has been called or after the response has been committed have no effect on the character encoding. If no character encoding has been specified, ISO-8859-1 is returned."
+               
+           } , {
+              
+              "signature" : "public java.lang.String getContentType()" ,
+              "description" : "Returns the content type used for the MIME body sent in this response. The content type proper must have been specified using setContentType(java.lang.String) before the response is committed. If no content type has been specified, this method returns null. If a content type has been specified and a character encoding has been explicitly or implicitly specified as described in getCharacterEncoding(), the charset parameter is included in the string returned. If no character encoding has been specified, the charset parameter is omitted."
+          } , {
+              
+              "signature" : "public ServletOutputStream getOutputStream() throws java.io.IOException" ,
+              "description" : "Returns a ServletOutputStream suitable for writing binary data in the response. The servlet container does not encode the binary data.",
+              "exception" : [  {
+                  
+                  "throws" : "java.lang.IllegalStateException - if the getWriter method has been called on this response"
+               } , {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+             ]
+          } , {
+              
+              "signature" : "public java.io.PrintWriter getWriter() throws java.io.IOException" ,
+              "description" : "Returns a PrintWriter object that can send character text to the client. The PrintWriter uses the character encoding returned by getCharacterEncoding(). If the response's character encoding has not been specified as described in getCharacterEncoding (i.e., the method just returns the default value ISO-8859-1), getWriter updates it to ISO-8859-1.",
+              "exception" : [  {
+                  
+                  "throws" : "UnsupportedEncodingException - if the character encoding returned by getCharacterEncoding cannot be used"
+               } , {
+                  
+                  "throws" : "java.lang.IllegalStateException - if the getOutputStream method has already been called for this response object"
+               } , {
+                  
+                  "throws" : "java.io.IOException - if an input or output exception occurred"
+               }  
+             ]
+          } , {
+              
+              "signature" : "public void setCharacterEncoding(java.lang.String charset)" ,
+              "description" : "Sets the character encoding (MIME charset) of the response being sent to the client, for example, to UTF-8. If the character encoding has already been set by setContentType(java.lang.String) or setLocale(java.util.Locale), this method overrides it. Calling setContentType(java.lang.String) with the String of text/html and calling this method with the String of UTF-8 is equivalent with calling setContentType with the String of text/html; charset=UTF-8."
+          } , {
+              
+              "signature" : "public void setContentLength(int len)" ,
+              "description" : "Sets the length of the content body in the response In HTTP servlets, this method sets the HTTP Content-Length header."
+          } , {
+              
+              "signature" : "public void setContentType(java.lang.String type)" ,
+              "description" : "Sets the content type of the response being sent to the client, if the response has not been committed yet. The given content type may include a character encoding specification, for example, text/html;charset=UTF-8. The response's character encoding is only set from the given content type if this method is called before getWriter is called."
+          } , {
+              
+              "signature" : "public void setBufferSize(int size)" ,
+              "description" : "Sets the preferred buffer size for the body of the response. The servlet container will use a buffer at least as large as the size requested. The actual buffer size used can be found using getBufferSize."
+          } , {
+              
+              "signature" : "public int getBufferSize()" ,
+              "description" : "Returns the actual buffer size used for the response. If no buffering is used, this method returns 0."
+          } , {
+              
+              "signature" : "public void flushBuffer() throws java.io.IOException" ,
+              "description" : "Forces any content in the buffer to be written to the client. A call to this method automatically commits the response, meaning the status code and headers will be written.",
+              "exception" : [  {
+                  
+                  "throws" : "java.io.IOException"
+               }  
+             ]
+          } , {
+              
+              "signature" : "public void resetBuffer()" ,
+              "description" : "Clears the content of the underlying buffer in the response without clearing headers or status code. If the response has been committed, this method throws an IllegalStateException."
+              
+          } , {
+              
+              "signature" : "public boolean isCommitted()" ,
+              "description" : "Returns a boolean indicating if the response has been committed. A committed response has already had its status code and headers written."
+              
+          } , {
+              
+              "signature" : "public void reset()" ,
+              "description" : "Clears any data that exists in the buffer as well as the status code and headers. If the response has been committed, this method throws an IllegalStateException."
+              
+          } , {
+              
+              "signature" : "public void setLocale(java.util.Locale loc)" ,
+              "description" : "Sets the locale of the response, if the response has not been committed yet. It also sets the response's character encoding appropriately for the locale, if the character encoding has not been explicitly set using setContentType(java.lang.String) or setCharacterEncoding(java.lang.String), getWriter hasn't been called yet, and the response hasn't been committed yet. If the deployment descriptor contains a locale-encoding-mapping-list element, and that element provides a mapping for the given locale, that mapping is used. Otherwise, the mapping from locale to character encoding is container dependent."
+              
+          } , {
+              
+              "signature" : "public java.util.Locale getLocale()" ,
+              "description" : "Returns the locale specified for this response using the setLocale(java.util.Locale) method. Calls made to setLocale after the response is committed have no effect. If no locale has been specified, the container's default locale is returned."
+              
+          }     
+       ]    
+     } , {
+          
+          "name" : "HttpServletRequest" ,
+          "signature" : "public interface HttpServletRequest extends ServletRequest" ,
+          "description" : "Extends the ServletRequest interface to provide request information for HTTP servlets." ,
+          "methods" : [ {
+              
+              "signature" : "public java.lang.String getAuthType()" ,
+              "description" : "Returns the name of the authentication scheme used to protect the servlet. All servlet containers support basic, form and client certificate authentication, and may additionally support digest authentication. If the servlet is not authenticated null is returned."
+               
+           } , {
+              
+              "signature" : "public Cookie[] getCookies()" ,
+              "description" : "Returns an array containing all of the Cookie objects the client sent with this request. This method returns null if no cookies were sent."
+          } , {
+              
+              "signature" : "public long getDateHeader(java.lang.String name)" ,
+              "description" : "Returns the value of the specified request header as a long value that represents a Date object. Use this method with headers that contain dates, such as If-Modified-Since."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getHeader(java.lang.String name)" ,
+              "description" : "Returns the value of the specified request header as a String. If the request did not include a header of the specified name, this method returns null. If there are multiple headers with the same name, this method returns the first head in the request. The header name is case insensitive. You can use this method with any request header."
+              
+          } , {
+              
+              "signature" : "public java.util.Enumeration getHeaders(java.lang.String name)" ,
+              "description" : "Returns all the values of the specified request header as an Enumeration of String objects."
+          } , {
+              
+              "signature" : "public java.util.Enumeration getHeaderNames()" ,
+              "description" : "Returns an enumeration of all the header names this request contains. If the request has no headers, this method returns an empty enumeration."
+          } , {
+              
+              "signature" : "public int getIntHeader(java.lang.String name)" ,
+              "description" : "Returns the value of the specified request header as an int. If the request does not have a header of the specified name, this method returns -1. If the header cannot be converted to an integer, this method throws a NumberFormatException."
+          } , {
+              
+              "signature" : "public java.lang.String getMethod()" ,
+              "description" : "Returns the name of the HTTP method with which this request was made, for example, GET, POST, or PUT. Same as the value of the CGI variable REQUEST_METHOD."
+          } , {
+              
+              "signature" : "public java.lang.String getPathInfo()" ,
+              "description" : "Returns any extra path information associated with the URL the client sent when it made this request. The extra path information follows the servlet path but precedes the query string and will start with a '/' character."
+          } , {
+              
+              "signature" : "public java.lang.String getPathTranslated()" ,
+              "description" : "Returns any extra path information after the servlet name but before the query string, and translates it to a real path. Same as the value of the CGI variable PATH_TRANSLATED."
+             
+          } , {
+              
+              "signature" : "public java.lang.String getContextPath()" ,
+              "description" : "Returns the portion of the request URI that indicates the context of the request. The context path always comes first in a request URI. The path starts with a '/' character but does not end with a '/' character. For servlets in the default (root) context, this method returns ''. The container does not decode this string."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getQueryString()" ,
+              "description" : "Returns the query string that is contained in the request URL after the path. This method returns null if the URL does not have a query string. Same as the value of the CGI variable QUERY_STRING."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getRemoteUser()" ,
+              "description" : "Returns the login of the user making this request, if the user has been authenticated, or null if the user has not been authenticated. Whether the user name is sent with each subsequent request depends on the browser and type of authentication. Same as the value of the CGI variable REMOTE_USER."
+              
+          } , {
+              
+              "signature" : "public boolean isUserInRole(java.lang.String role)" ,
+              "description" : "Returns a boolean indicating whether the authenticated user is included in the specified logical 'role'. Roles and role membership can be defined using deployment descriptors. If the user has not been authenticated, the method returns false."
+              
+          } , {
+              
+              "signature" : "public java.security.Principal getUserPrincipal()" ,
+              "description" : "Returns a java.security.Principal object containing the name of the current authenticated user. If the user has not been authenticated, the method returns null."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getRequestedSessionId()" ,
+              "description" : "Returns the session ID specified by the client. This may not be the same as the ID of the current valid session for this request. If the client did not specify a session ID, this method returns null."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getRequestURI()" ,
+              "description" : "Returns the part of this request's URL from the protocol name up to the query string in the first line of the HTTP request. The web container does not decode this String. "
+              
+          } , {
+              
+              "signature" : "public java.lang.StringBuffer getRequestURL()" ,
+              "description" : "Reconstructs the URL the client used to make the request. The returned URL contains a protocol, server name, port number, and server path, but it does not include query string parameters."
+              
+          } , {
+              
+              "signature" : "public java.lang.String getServletPath()" ,
+              "description" : "Returns the part of this request's URL that calls the servlet. This path starts with a '/' character and includes either the servlet name or a path to the servlet, but does not include any extra path information or a query string. Same as the value of the CGI variable SCRIPT_NAME."
+              
+          } , {
+              
+              "signature" : "public HttpSession getSession(boolean create)" ,
+              "description" : "Returns the current HttpSession associated with this request or, if there is no current session and create is true, returns a new session."
+              
+          } , {
+              
+              "signature" : "public HttpSession getSession()" ,
+              "description" : "Returns the current session associated with this request, or if the request does not have a session, creates one."
+              
+          } , {
+              
+              "signature" : "public boolean isRequestedSessionIdValid()" ,
+              "description" : "Checks whether the requested session ID is still valid."
+              
+          } , {
+              
+              "signature" : "public boolean isRequestedSessionIdFromCookie()" ,
+              "description" : "Checks whether the requested session ID came in as a cookie."
+              
+          } , {
+              
+              "signature" : "public boolean isRequestedSessionIdFromURL()" ,
+              "description" : "Checks whether the requested session ID came in as part of the request URL."
+              
+          }         
+       ]    
+     }  , {
+          
+          "name" : "HttpServletResponse" ,
+          "signature" : "public interface HttpServletResponse extends ServletRequest" ,
+          "description" : "Extends the ServletResponse interface to provide HTTP-specific functionality in sending a response. For example, it has methods to access HTTP headers and cookies." ,
+          "methods" : [ {
+              
+              "signature" : "public void addCookie(Cookie cookie)" ,
+              "description" : "Adds the specified cookie to the response. This method can be called multiple times to set more than one cookie."
+               
+           } , {
+              
+              "signature" : "public boolean containsHeader(java.lang.String name)" ,
+              "description" : "Returns a boolean indicating whether the named response header has already been set."
+          } , {
+              
+              "signature" : "public java.lang.String encodeURL(java.lang.String url)" ,
+              "description" : "Encodes the specified URL by including the session ID in it, or, if encoding is not needed, returns the URL unchanged. The implementation of this method includes the logic to determine whether the session ID needs to be encoded in the URL. For example, if the browser supports cookies, or session tracking is turned off, URL encoding is unnecessary."
+              
+          } , {
+              
+              "signature" : "public java.lang.String encodeRedirectURL(java.lang.String url)" ,
+              "description" : "Encodes the specified URL for use in the sendRedirect method or, if encoding is not needed, returns the URL unchanged. The implementation of this method includes the logic to determine whether the session ID needs to be encoded in the URL. Because the rules for making this determination can differ from those used to decide whether to encode a normal link, this method is separated from the encodeURL method."
+              
+          } , {
+              
+              "signature" : "public void sendError(int sc,java.lang.String msg) throws java.io.IOException" ,
+              "description" : "Sends an error response to the client using the specified status code and clearing the buffer.",
+              "exception" : [  {
+                  
+                  "throws" : "java.io.IOException - If an input or output exception occurs"
+               } , {
+                  
+                  "throws" : "java.lang.IllegalStateException - If the response was committed before this method call"
+               } 
+             ]
+          } , {
+              
+              "signature" : "public void sendRedirect(java.lang.String location) throws java.io.IOException" ,
+              "description" : "Sends a temporary redirect response to the client using the specified redirect location URL.",
+              "exception" : [  {
+                  
+                  "throws" : "java.io.IOException - If an input or output exception occurs"
+               } , {
+                  
+                  "throws" : "java.lang.IllegalStateException - If the response was committed or if a partial URL is given and cannot be converted into a valid URL"
+               } 
+             ]
+          } , {
+              
+              "signature" : "public void setDateHeader(java.lang.String name,long date)" ,
+              "description" : "Sets a response header with the given name and date-value."
+          } , {
+              
+              "signature" : "public void addDateHeader(java.lang.String name,long date)" ,
+              "description" : "Adds a response header with the given name and date-value. The date is specified in terms of milliseconds since the epoch. This method allows response headers to have multiple values."
+          } , {
+              
+              "signature" : "public void setHeader(java.lang.String name,java.lang.String value)" ,
+              "description" : "Sets a response header with the given name and value. If the header had already been set, the new value overwrites the previous one. The containsHeader method can be used to test for the presence of a header before setting its value."
+          } , {
+              
+              "signature" : "public void addHeader(java.lang.String name,java.lang.String value)" ,
+              "description" : "Adds a response header with the given name and value. This method allows response headers to have multiple values."
+             
+          } , {
+              
+              "signature" : "public void setIntHeader(java.lang.String name,int value)" ,
+              "description" : "Sets a response header with the given name and integer value. If the header had already been set, the new value overwrites the previous one. The containsHeader method can be used to test for the presence of a header before setting its value."
+              
+          } , {
+              
+              "signature" : "public void addIntHeader(java.lang.String name,int value)" ,
+              "description" : "Adds a response header with the given name and integer value. This method allows response headers to have multiple values."
+              
+          } , {
+              
+              "signature" : "public void setStatus(int sc)" ,
+              "description" : "Sets the status code for this response. "
+              
+          }         
+       ]    
+     } , {
+          
+          "name" : "HttpSession" ,
+          "signature" : "public interface HttpSession" ,
+          "description" : "Provides a way to identify a user across more than one page request or visit to a Web site and to store information about that user." ,
+          "methods" : [ {
+              
+              "signature" : "public long getCreationTime()" ,
+              "description" : "Returns the time when this session was created, measured in milliseconds since midnight January 1, 1970 GMT.",
+              "exception" : [  {
+                  
+                  "throws" : "java.lang.IllegalStateException - if this method is called on an invalidated session"
+               }
+             ]
+               
+           } , {
+              
+              "signature" : "public java.lang.String getId()" ,
+              "description" : "Returns a string containing the unique identifier assigned to this session. The identifier is assigned by the servlet container and is implementation dependent."
+          } , {
+              
+              "signature" : "public long getLastAccessedTime()" ,
+              "description" : "Returns the last time the client sent a request associated with this session, as the number of milliseconds since midnight January 1, 1970 GMT, and marked by the time the container received the request."
+              
+          } , {
+              
+              "signature" : "public ServletContext getServletContext()" ,
+              "description" : "Returns the ServletContext to which this session belongs."
+              
+          } , {
+              
+              "signature" : "public void setMaxInactiveInterval(int interval)" ,
+              "description" : "Specifies the time, in seconds, between client requests before the servlet container will invalidate this session. A negative time indicates the session should never timeout."
+             
+          } , {
+              
+              "signature" : "public java.lang.Object getAttribute(java.lang.String name)" ,
+              "description" : "Returns the object bound with the specified name in this session, or null if no object is bound under the name."
+              
+          } , {
+              
+              "signature" : "public java.util.Enumeration getAttributeNames()" ,
+              "description" : "Returns an Enumeration of String objects containing the names of all the objects bound to this session."
+          } , {
+              
+              "signature" : "public void setAttribute(java.lang.String name,java.lang.Object value)" ,
+              "description" : "Binds an object to this session, using the name specified. If an object of the same name is already bound to the session, the object is replaced."
+          } , {
+              
+              "signature" : "public void removeAttribute(java.lang.String name)" ,
+              "description" : "Removes the object bound with the specified name from this session. If the session does not have an object bound with the specified name, this method does nothing."
+          } , {
+              
+              "signature" : "public void invalidate()" ,
+              "description" : "Invalidates this session then unbinds any objects bound to it."
+             
+          } , {
+              
+              "signature" : "public boolean isNew()" ,
+              "description" : "Returns true if the client does not yet know about the session or if the client chooses not to join the session. For example, if the server used only cookie-based sessions, and the client had disabled the use of cookies, then a session would be new on each request."
+              
+          }         
+       ]    
+     } , {
+          
+          "name" : "HttpSessionActivationListener" ,
+          "signature" : "public interface HttpSessionActivationListener extends java.util.EventListener" ,
+          "description" : "Provides a way to identify a user across more than one page request or visit to a Web site and to store information about that user." ,
+          "methods" : [ {
+              
+              "signature" : "public void sessionWillPassivate(HttpSessionEvent se)" ,
+              "description" : "Notification that the session is about to be passivated."
+               
+           } , {
+              
+              "signature" : "public void sessionDidActivate(HttpSessionEvent se)" ,
+              "description" : "Notification that the session has just been activated."
+          }         
+       ]    
+     } , {
+          
+          "name" : "HttpSessionAttributeListener" ,
+          "signature" : "public interface HttpSessionAttributeListener extends java.util.EventListener" ,
+          "description" : "This listener interface can be implemented in order to get notifications of changes to the attribute lists of sessions within this web application." ,
+          "methods" : [ {
+              
+              "signature" : "public void attributeAdded(HttpSessionBindingEvent se)" ,
+              "description" : "Notification that an attribute has been added to a session. Called after the attribute is added."
+               
+           } , {
+              
+              "signature" : "public void attributeRemoved(HttpSessionBindingEvent se)" ,
+              "description" : "Notification that an attribute has been removed from a session. Called after the attribute is removed."
+          } , {
+              
+              "signature" : "public void attributeReplaced(HttpSessionBindingEvent se)" ,
+              "description" : "Notification that an attribute has been replaced in a session. Called after the attribute is replaced."
+          }         
+       ]    
+     } , {
+          
+          "name" : "HttpSessionBindingListener" ,
+          "signature" : "public interface HttpSessionBindingListener extends java.util.EventListener" ,
+          "description" : "Causes an object to be notified when it is bound to or unbound from a session." ,
+          "methods" : [ {
+              
+              "signature" : "public void valueBound(HttpSessionBindingEvent event)" ,
+              "description" : "Notifies the object that it is being bound to a session and identifies the session."
+               
+           } , {
+              
+              "signature" : "public void valueUnbound(HttpSessionBindingEvent event)" ,
+              "description" : "Notifies the object that it is being unbound from a session and identifies the session."
+          }         
+       ]    
+     } , {
+          
+          "name" : "HttpSessionContext" ,
+          "signature" : "public interface HttpSessionContext" ,
+          "description" : "Deprecated. As of Java(tm) Servlet API 2.1 for security reasons, with no replacement. This interface will be removed in a future version of this API." 
+            
+     } , {
+          
+          "name" : "HttpSessionListener" ,
+          "signature" : "public interface HttpSessionListener extends java.util.EventListener" ,
+          "description" : "Implementations of this interface are notified of changes to the list of active sessions in a web application. To receive notification events, the implementation class must be configured in the deployment descriptor for the web application." ,
+          "methods" : [ {
+              
+              "signature" : "public void sessionCreated(HttpSessionEvent se)" ,
+              "description" : "Notification that a session was created."
+               
+           } , {
+              
+              "signature" : "public void sessionDestroyed(HttpSessionEvent se)" ,
+              "description" : "Notification that a session is about to be invalidated."
+          }         
+       ]
+            
+     } , {
+          
+          "name" : "SingleThreadModel" ,
+          "signature" : "public interface SingleThreadModel" ,
+          "description" : "Deprecated. As of Java Servlet API 2.4, with no direct replacement." 
+         
+            
+     } , {
+          
+          "name" : "ServletRequestAttributeListener" ,
+          "signature" : "public interface ServletRequestAttributeListener extends java.util.EventListener" ,
+          "description" : "A ServletRequestAttributeListener can be implemented by the developer interested in being notified of request attribute changes. " ,
+          "methods" : [ {
+              
+              "signature" : "public void attributeAdded(ServletRequestAttributeEvent srae)" ,
+              "description" : "Notification that a new attribute was added to the servlet request. Called after the attribute is added."
+               
+           } , {
+              
+              "signature" : "public void attributeRemoved(ServletRequestAttributeEvent srae)" ,
+              "description" : "Notification that an existing attribute has been removed from the servlet request. Called after the attribute is removed."
+          }  , {
+              
+              "signature" : "public void attributeReplaced(ServletRequestAttributeEvent srae)" ,
+              "description" : "Notification that an attribute was replaced on the servlet request. Called after the attribute is replaced."
+          }       
+       ]
+            
+     } , {
+          
+          "name" : "Serializable" ,
+          "signature" : "public interface Serializable" ,
+          "description" : "Serializability of a class is enabled by the class implementing the java.io.Serializable interface. Classes that do not implement this interface will not have any of their state serialized or deserialized. All subtypes of a serializable class are themselves serializable. The serialization interface has no methods or fields and serves only to identify the semantics of being serializable." 
+     } , {
+          
+          "name" : "Cloneable" ,
+          "signature" : "public interface Cloneable" ,
+          "description" : "A class implements the Cloneable interface to indicate to the Object.clone() method that it is legal for that method to make a field-for-field copy of instances of that class." 
+     }
+    
+    ] ,
+   
+   "exception":[ {
+
+         "name" : "ServletException",
+         "signature" : "public class ServletException extends java.lang.Exception",
+         "description" : "Defines a general exception a servlet can throw when it encounters difficulty.",
+         "constructors" :[ {
+
+             "signature" : "public ServletException()",
+             "description" : "Constructs a new servlet exception with the specified message. The message can be written to the server log and/or displayed for the user."
+
+           } , {
+
+             "signature" : "public ServletException(java.lang.String message,java.lang.Throwable rootCause)",
+             "description" : "Constructs a new servlet exception when the servlet needs to throw an exception and include a message about the 'root cause' exception that interfered with its normal operation, including a description message."
+
+           } , {
+
+             "signature" : "public ServletException(java.lang.Throwable rootCause)",
+             "description" : "Constructs a new servlet exception when the servlet needs to throw an exception and include a message about the 'root cause' exception that interfered with its normal operation. The exception's message is based on the localized message of the underlying exception."
+
+           }  
+         ] ,
+         "methods" : [ {
+                   
+              "signature" : "public java.lang.Throwable getRootCause()",
+              "description" : "Returns the exception that caused this servlet exception."
+
+          }
+         ]
+   } , {
+
+         "name" : "UnavailableException",
+         "signature" : "public class UnavailableException extends ServletException",
+         "description" : "Defines an exception that a servlet or filter throws to indicate that it is permanently or temporarily unavailable.",
+         "constructors" :[ {
+
+             "signature" : "public UnavailableException(java.lang.String msg)",
+             "description" : "Constructs a new exception with a descriptive message indicating that the servlet is permanently unavailable."
+
+           } , {
+
+             "signature" : "public UnavailableException(java.lang.String msg,int seconds)",
+             "description" : "Constructs a new exception with a descriptive message indicating that the servlet is temporarily unavailable and giving an estimate of how long it will be unavailable."
+
+           }  
+         ] ,
+         "methods" : [ {
+                   
+              "signature" : "public boolean isPermanent()",
+              "description" : "Returns a boolean indicating whether the servlet is permanently unavailable. If so, something is wrong with the servlet, and the system administrator must take some corrective action."
+
+          } , {
+                   
+              "signature" : "public int getUnavailableSeconds()",
+              "description" : "Returns the number of seconds the servlet expects to be temporarily unavailable."
+
+          }
+         ]
+   }
+
+   ]
+    
+      
+   }
+   
+}
