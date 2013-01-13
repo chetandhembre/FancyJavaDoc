@@ -1,12 +1,11 @@
 {
-  "name": "Fancy Java Doc",
+  "name": "FancyJavaDoc",
   "version": "0.0.1",
   "dependencies": {
     "express": "3.x.x"
-    
   },
   "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+    "node": "0.8.x"
+    
   }
 }
