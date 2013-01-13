@@ -2,7 +2,7 @@
   "name": "Fancy Java Doc",
   "version": "0.0.1",
   "dependencies": {
-    "express": "2.5.x"
+    "express": "3.x.x"
     
   },
   "engines": {
