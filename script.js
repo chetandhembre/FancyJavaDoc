@@ -5,79 +5,110 @@
 
 var info12;
 var autocomplete_array = [];
-d3.json("info.json", function(json) {
-	   
-	   info12=json;
-});
-
 var autocomplete ;
-d3.json("autocomplete.json", function(json) {
-	   
-	   autocomplete = json;
-}); 
+var data ;
 
-var data ; 
-d3.json("data.json", function(json) {
-	   
-	   data = json;
-	   render(data);
-});
+function loaddata() {
+	d3.json("info.json", function(json) {
+		   
+		   info12=json;
+		   d3.json("autocomplete.json", function(json) {
+		   
+		   			autocomplete = json;
+		   			d3.json("data.json", function(json) {
+		   
+						   data = json;
+						   render(data);
+					});
+			}); 
+		   
+	});
+
+}
+
+
+ 
+
 var ret;
-var auto = document.getElementById("searchquery");
-auto.addEventListener("keyup",function(){
-	
-	var that = event.target;
-	var query = that.value;
-	
-	if ( query.length > 0  ) {
-	   
-	   if( ret != null) {
-	   	  
-	   	onmouseout_circle(null,ret.index);
-	   }
-	   
-	   ret = autocompleteIt( query);
-	   
-	   if( ret != null ) {
-	   	
-	   	  var type = ret.type;
-	      var impinfo =  (type == 2) ? info12.nodes.class : ((type == 1) ? info12.nodes.interface : info12.nodes.exception);
-	      getRequireInfoObject( impinfo ,ret.name );
-	      //console.log(ret.index);
-	      onclick_circle(null,ret.index);
-	   	
-	   }
-	   
-	   
-	   	
-	}
+
+var svg;
+var width,height,force;
+
+function load() {
 	
 	
-	
-});
-
-
-
-var width = window.document.width * 0.55,
-    height = window.document.height
-
-var info = document.getElementById("info");
-
-info.style.height = window.document.height + 15 + "px";
-info.style.width = window.document.width* 0.42 + "px";
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
+	width  = window.screen.width * 0.55;
+    height = window.screen.height;
     
+    
+	var info = document.getElementById("info");
+	
+	info.style.height = window.screen.height + 15 + "px";
+	info.style.width = window.screen.width* 0.42 + "px";
+	var auto = document.getElementById("searchquery");
+	auto.addEventListener("keyup",keyuplistener);
+	
+	svg = d3.select("body").append("svg")
+	    .attr("width", width)
+	    .attr("height", height)
+	    .on("click",clickonsvg);
+	    
+	    
+	    
+     force = d3.layout.force()
+	    .gravity(0.05)
+	    .distance(100)
+	    .friction(0.5)
+	    .size([width, height]);
 
-var force = d3.layout.force()
-    .gravity(0.05)
-    .distance(100)
-    .friction(0.5)
-    .size([width, height]);
+     
+     loaddata();
+     
+  	
+}
 
 
+function clickonsvg() {
+	
+	
+	
+} 
+
+function keyuplistener() {
+	
+		  	
+		  	
+			var that = this;
+			var query = that.value;
+			
+			
+			if ( query.length > 0  ) {
+			   
+			   if( ret != null) {
+			   	  
+			   	onmouseout_circle(null,ret.index);
+			   }
+			   
+			   ret = autocompleteIt( query);
+			   
+			   if( ret != null ) {
+			   	
+			   	  var type = ret.type;
+			      var impinfo =  (type == 2) ? info12.nodes.class : ((type == 1) ? info12.nodes.interface : info12.nodes.exception);
+			      getRequireInfoObject( impinfo ,ret.name );
+			      //console.log(ret.index);
+			      onclick_circle(null,ret.index);
+			   	
+			   }
+			   
+			   
+			   	
+			}
+			
+			
+			
+		
+}
 
 function render(json){	
   force
@@ -114,6 +145,11 @@ function render(json){
       	 return d.type;
       	 
       })
+      .attr("name",function(d,i){
+      	
+      	 return d.type;
+      	 
+      })
       .attr("y", -8)
       .attr("fill",function(d){
 
@@ -143,7 +179,8 @@ function render(json){
       .on("click",function(d,i){
 
           onmouseout_circle(d,i);
-            getinfo(this,i)      
+          
+          getinfo(this,i)      
           onclick_circle(d,i);
           
       });   
@@ -183,12 +220,24 @@ function render(json){
 function onmouseover_circle(d,i) {
 	
 	    
-	    var array = d3.selectAll("circle").selectAll("#a"+i)[i].parentNode;
+	    var array = d3.selectAll("circle").selectAll("#a"+i);
+	    var array1 = array[i].parentNode;
 	    
-	     array.setAttribute("opacity","1");
+	     array1.setAttribute("opacity","1");
          
+                          
         var text = d3.selectAll("text");
         text.selectAll("#a"+i)[i].parentNode.setAttribute("display","block");
+        if( array[i].parentNode.getAttribute("r") >= 20) {
+                 	
+                     text.selectAll(id)[i].parentNode.setAttribute("dy","-2.40em");
+                     	
+                 } else {
+                 	
+                 	 text.selectAll(id)[i].parentNode.setAttribute("dy","-1.20em");
+                 	
+          }
+
         var json = data;
         for( var j = 0 ; j < json.links.length; j++) {
                   
@@ -196,9 +245,24 @@ function onmouseover_circle(d,i) {
             
                  var target = (json.links[j].target.index == i) ? json.links[j].source.index : json.links[j].target.index;
                  var id = "#a"+target;
-                 text.selectAll(id)[i].parentNode.setAttribute("display","block");
-                 d3.selectAll(id).attr("opacity","1");
+                 
+                 
                  text.selectAll(id)[target].parentNode.setAttribute("display","block");
+                 d3.selectAll(id).attr("opacity","1");
+                 
+                 if( array[target].parentNode.getAttribute("r") >= 20) {
+                 	
+                     text.selectAll(id)[target].parentNode.setAttribute("dy","-2.40em");
+                     	
+                 } else {
+                 	
+                 	 text.selectAll(id)[target].parentNode.setAttribute("dy","-1.20em");
+                 	
+                 }
+                 
+                 
+                 
+                 
                  
                    
             }
@@ -212,9 +276,7 @@ function onmouseout_circle(d,i) {
 	
 		  var array = d3.selectAll("circle").selectAll("#a"+i);
           var array1 = array[i].parentNode;
-          array1.setAttribute("opacity","0.2");
-          array1.setAttribute("r","10");
-          //d3.select(this).attr("r","10");
+         
           var text = d3.selectAll("text");
           text.selectAll("#a"+i)[i].parentNode.setAttribute("display","none");
           text.selectAll("#a"+i)[i].parentNode.setAttribute("dy","-1.20em");
@@ -226,10 +288,6 @@ function onmouseout_circle(d,i) {
                  var id = "#a"+target;
                  text.selectAll(id)[target].parentNode.setAttribute("display","none");
                  text.selectAll(id)[target].parentNode.setAttribute("dy","-1.20em");
-                // d3.selectAll(id).attr("opacity","0.2");
-                // d3.selectAll(id).attr("r","10");
-                array[target].parentNode.setAttribute("opacity","0.2");
-          		array[target].parentNode.setAttribute("r","10");
                  
             }
             
@@ -240,11 +298,22 @@ function onmouseout_circle(d,i) {
 	
 }
 
+
+function makecirclesmall() {
+	
+	d3.selectAll("text").attr("display","none");
+	d3.selectAll("circle").attr("opacity","0.2");
+	d3.selectAll("circle").attr("r","10");
+	
+}
+
+
 function onclick_circle(d,i) {
 	
-	  
+	  makecirclesmall();
 	  document.getElementById("intro").style.display = "none";
 	  document.getElementById("doc").style.display = "block";
+	  
 	  var array1 = d3.selectAll("circle").selectAll("#a"+i);
       var array2 = array1[i].parentNode;    
       array2.setAttribute("opacity","1");
@@ -320,8 +389,10 @@ function onclick_circle(d,i) {
 
 function getinfo(that,no) {
 	
+	
 	var id = that.id;
-	var type = that.dataset.value ;
+	//alert();
+	var type = that.getAttribute("data-value") ;
 	console.log(that);
 	var text = d3.selectAll("text").selectAll(id)[no].parentNode.__data__.name;
 	var impinfo =  (type == 2) ? info12.nodes.class : ((type == 1) ? info12.nodes.interface : info12.nodes.exception);
@@ -335,7 +406,7 @@ function getinfo(that,no) {
 function getRequireInfoObject( impinfo ,text ) {
 	
 	
-	console.log(impinfo+"dfdf");
+	
 	impinfo.forEach( function (obj) {
 		
 		if( obj.name ===  text ) {
@@ -408,6 +479,7 @@ function renderThisInfo( obj ) {
 			var ulTag1 = document.createElement("ul");
 			var liTag1 = document.createElement("li");
 			liTag1.innerHTML = method.description;
+	
 			liTag1.className = "method_desciption";
 			ulTag1.appendChild(liTag1);
 			if( method.exception !== undefined) {
